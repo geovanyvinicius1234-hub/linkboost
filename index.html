@@ -1,51 +1,794 @@
-<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>LinkBoost V1</title>
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LinkBoost V1</title>
+
 <style>
-:root{--bg:#070b14;--panel:#0d1422;--panel2:#111a2b;--line:#202d43;--text:#f5f7fb;--muted:#8e9ab0;--purple:#7657ff;--purple2:#9b7cff;--green:#35e29a;--blue:#2d8cff;--red:#ff5d6c}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px Inter,system-ui,-apple-system,Segoe UI,sans-serif}.app{min-height:100vh;display:flex}.side{width:235px;background:#080e19;border-right:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh}.brand{font-size:25px;font-weight:800;margin:4px 10px 5px}.brand b{color:var(--purple2)}.sub,.muted{color:var(--muted)}.sub{font-size:12px;line-height:1.4;margin:0 10px 28px}.nav{display:grid;gap:7px}.nav button{border:0;background:transparent;color:#c7cfdd;text-align:left;padding:12px 13px;border-radius:10px;font-size:14px;cursor:pointer}.nav button.active,.nav button:hover{background:#392b87;color:white}.tip{position:absolute;bottom:18px;left:16px;right:16px;border:1px solid var(--line);border-radius:12px;padding:15px;background:#0b1321;color:#cbd4e3}.main{flex:1;padding:30px;max-width:1500px;margin:auto}.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}.title h1{margin:0 0 7px;font-size:30px}.title p{margin:0;color:var(--muted)}.avatar{background:#121c2c;border:1px solid var(--line);padding:9px 13px;border-radius:12px}.grid{display:grid;grid-template-columns:1.7fr .8fr;gap:18px}.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px;margin-bottom:16px}.row{display:flex;justify-content:space-between;align-items:center;gap:12px}.card h3{margin:0 0 5px}.connections{display:grid;grid-template-columns:1fr 1fr;gap:14px}.connect{min-height:150px}.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:20px}.shopee{background:#ff613e}.facebook{background:#2d8cff}.status{display:inline-flex;gap:6px;align-items:center;background:#103b2c;color:var(--green);padding:5px 8px;border-radius:999px;font-size:12px}.status.warn{background:#332d12;color:#ffd35a}.dot{width:7px;height:7px;border-radius:50%;background:currentColor}.input{width:100%;background:#09111e;border:1px solid var(--line);color:#dce3ef;padding:11px;border-radius:9px;margin-top:12px}.btn{border:0;border-radius:9px;padding:10px 13px;color:white;background:var(--purple);font-weight:700;cursor:pointer}.btn:hover{filter:brightness(1.1)}.btn.secondary{background:#18243a}.btn.green{background:#13875d}.btn.danger{background:#632536}.groups,.products,.queue{display:grid;gap:8px}.item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#0a111e;border-radius:10px;padding:10px}.thumb{width:43px;height:43px;border-radius:9px;background:linear-gradient(135deg,#26344b,#101827);display:grid;place-items:center;font-size:20px}.grow{flex:1;min-width:0}.switch{width:42px;height:23px;background:#27354b;border-radius:20px;padding:3px;cursor:pointer}.switch i{display:block;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s}.switch.on{background:var(--green)}.switch.on i{transform:translateX(19px)}.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}.stat{background:#0a111e;border:1px solid var(--line);border-radius:10px;padding:13px}.stat strong{font-size:21px;display:block;margin-top:5px}.greenText{color:var(--green)}.purple{color:#b5a5ff}.products{grid-template-columns:repeat(2,1fr)}.product{overflow:hidden}.product .pic{height:90px;background:linear-gradient(135deg,#26334a,#111a2a);display:grid;place-items:center;font-size:32px;border-radius:9px;margin-bottom:9px}.price{color:var(--green);font-weight:800}.schedule{display:flex;flex-wrap:wrap;gap:8px}.time{padding:8px 11px;background:#17233a;border:1px solid var(--line);border-radius:8px}.ai{border-color:#4d3db0;background:linear-gradient(145deg,#15142c,#0d1422)}.notice{padding:10px 12px;border-radius:9px;background:#101b2d;color:#aab6ca;font-size:12px;line-height:1.45;margin-top:12px;white-space:pre-wrap}.modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;padding:20px;z-index:5}.modal.show{display:flex}.modalbox{background:#101827;border:1px solid var(--line);border-radius:14px;padding:22px;max-width:520px;width:100%;max-height:90vh;overflow:auto}.modalbox h2{margin-top:0}.close{float:right;background:none;border:0;color:#9aa7bc;font-size:22px;cursor:pointer}.form{display:grid;gap:10px}.form label{font-size:12px;color:var(--muted)}.toast{position:fixed;right:20px;bottom:20px;background:#102038;border:1px solid var(--line);padding:12px 15px;border-radius:10px;display:none;z-index:10}.toast.show{display:block}.small{font-size:12px}.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}.posttext{white-space:pre-wrap;color:#d8dfeb;line-height:1.45}.badge{font-size:11px;padding:4px 7px;border-radius:99px;background:#18243a;color:#b8c5da}.badge.pending{color:#ffd35a;background:#332d12}.badge.done{color:var(--green);background:#103b2c}@media(max-width:1000px){.side{display:none}.main{padding:18px}.grid{grid-template-columns:1fr}}@media(max-width:600px){.connections,.products{grid-template-columns:1fr}.top{flex-direction:column}}
-</style></head><body><div class="app"><aside class="side"><div class="brand">🚀 Link<b>Boost</b></div><div class="sub">V1 funcional local<br>Produtos + fila + agenda.</div><nav class="nav"><button class="active" data-section="dashboard">⌂ &nbsp; Painel</button><button data-section="products">🛍️ &nbsp; Produtos</button><button data-section="groups">👥 &nbsp; Grupos</button><button data-section="schedule">🗓️ &nbsp; Agendamentos</button><button data-section="posts">➤ &nbsp; Postagens</button><button data-section="settings">⚙ &nbsp; Configurações</button></nav><div class="tip"><b>V1 sem gambiarra</b><p>Os dados são salvos no servidor local. As credenciais de APIs ficam fora do navegador.</p></div></aside>
-<main class="main"><div class="top"><div class="title"><h1>Olá, Giovanni! 👋</h1><p>Agora os botões realmente salvam dados e alimentam a fila.</p></div><div class="avatar">● V1 local</div></div>
-<div class="grid"><section>
-<div class="connections"><div class="card connect"><div class="row"><div class="icon shopee">S</div><span id="shopeeStatus" class="status warn"><i class="dot"></i> API não configurada</span></div><h3>Integração Shopee</h3><div class="muted">Cadastre produtos por link agora. API fica pronta para receber as credenciais no servidor.</div><button class="btn secondary" style="margin-top:12px" onclick="openSettings()">Configurar</button></div>
-<div class="card connect"><div class="row"><div class="icon facebook">f</div><span id="facebookStatus" class="status warn"><i class="dot"></i> API não configurada</span></div><h3>Integração Facebook</h3><div class="muted">A V1 organiza grupos e fila. Publicação automática depende das permissões oficiais disponíveis.</div><button class="btn secondary" style="margin-top:12px" onclick="openSettings()">Ver configuração</button></div></div>
-<div class="card"><div class="row"><div><h3>👥 Grupos selecionados</h3><div class="muted">Ative ou pause grupos da sua automação.</div></div><button class="btn" onclick="openGroupModal()">＋ Adicionar grupo</button></div><div class="groups" id="groups"></div></div>
-<div class="card"><div class="row"><div><h3>🛒 Seus produtos</h3><div class="muted">Cole um link da Shopee e coloque o produto na sua fila.</div></div><button class="btn" onclick="openProductModal()">＋ Adicionar produto</button></div><div class="products" id="products"></div></div>
-<div class="card"><div class="row"><div><h3>🗓️ Agenda de posts</h3><div class="muted">A agenda alimenta a fila automaticamente.</div></div><button class="btn secondary" onclick="openScheduleModal()">Configurar</button></div><div style="margin:14px 0 10px"><label class="muted">Posts por dia</label><select class="input" id="postsDay" onchange="saveSchedule()"><option>3</option><option>5</option><option>7</option><option>10</option></select></div><div class="schedule" id="times"></div></div>
-<div class="card ai"><h3>✨ Gerador de legendas</h3><p class="muted">Escolha um produto para gerar 3 variações e adicionar uma delas à fila.</p><div class="row"><select class="input" id="aiProduct" style="margin-top:0"></select><button class="btn" onclick="generate()">Gerar</button></div><div id="aiText" class="notice">Nenhuma legenda gerada ainda.</div></div>
-</section><aside>
-<div class="card"><h3>📊 Visão geral</h3><div class="stats"><div class="stat"><span class="muted">Produtos</span><strong id="statProducts">0</strong><span class="greenText">● cadastrados</span></div><div class="stat"><span class="muted">Grupos ativos</span><strong id="statGroups">0</strong><span class="greenText">● selecionados</span></div><div class="stat"><span class="muted">Fila</span><strong id="statQueue">0</strong><span class="purple">● pendentes</span></div><div class="stat"><span class="muted">Publicados</span><strong id="statDone">0</strong><span class="greenText">● registrados</span></div></div></div>
-<div class="card"><div class="row"><h3>🗓️ Próximas publicações</h3><button class="btn secondary" onclick="showPosts()">Ver fila</button></div><div class="queue" id="queue"></div></div>
-<div class="card"><h3>🚀 Próximo passo</h3><p class="muted">Com esta base funcionando, a etapa seguinte é conectar as credenciais reais e implementar os adaptadores oficiais de Shopee/Facebook.</p></div>
-</aside></div></main></div><div class="modal" id="modal"><div class="modalbox"><button class="close" onclick="closeModal()">×</button><div id="modalContent"></div></div></div><div class="toast" id="toast"></div>
+:root{--bg:#070b14;--panel:#0d1422;--panel2:#111a2b;--line:#202d43;--text:#f5f7fb;--muted:#8e9ab0;--purple:#7657ff;--purple2:#9b7cff;--green:#35e29a;--blue:#2d8cff;--red:#ff5d6c}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:14px Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+.app{min-height:100vh;display:flex}
+.side{width:235px;background:#080e19;border-right:1px solid var(--line);padding:24px 16px;position:sticky;top:0;height:100vh}
+.brand{font-size:25px;font-weight:800;margin:4px 10px 5px}
+.brand b{color:var(--purple2)}
+.sub,.muted{color:var(--muted)}
+.sub{font-size:12px;line-height:1.4;margin:0 10px 28px}
+.nav{display:grid;gap:7px}
+.nav button{border:0;background:transparent;color:#c7cfdd;text-align:left;padding:12px 13px;border-radius:10px;font-size:14px;cursor:pointer}
+.nav button.active,.nav button:hover{background:#392b87;color:white}
+.tip{position:absolute;bottom:18px;left:16px;right:16px;border:1px solid var(--line);border-radius:12px;padding:15px;background:#0b1321;color:#cbd4e3}
+.main{flex:1;padding:30px;max-width:1500px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;margin-bottom:22px}
+.title h1{margin:0 0 7px;font-size:30px}
+.title p{margin:0;color:var(--muted)}
+.avatar{background:#121c2c;border:1px solid var(--line);padding:9px 13px;border-radius:12px}
+.grid{display:grid;grid-template-columns:1.7fr .8fr;gap:18px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:17px;margin-bottom:16px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.card h3{margin:0 0 5px}
+.connections{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.connect{min-height:150px}
+.icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:900;font-size:20px}
+.shopee{background:#ff613e}
+.facebook{background:#2d8cff}
+.status{display:inline-flex;gap:6px;align-items:center;background:#103b2c;color:var(--green);padding:5px 8px;border-radius:999px;font-size:12px}
+.status.warn{background:#332d12;color:#ffd35a}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.input{width:100%;background:#09111e;border:1px solid var(--line);color:#dce3ef;padding:11px;border-radius:9px;margin-top:12px}
+.btn{border:0;border-radius:9px;padding:10px 13px;color:white;background:var(--purple);font-weight:700;cursor:pointer}
+.btn:hover{filter:brightness(1.1)}
+.btn.secondary{background:#18243a}
+.btn.green{background:#13875d}
+.btn.danger{background:#632536}
+.groups,.products,.queue{display:grid;gap:8px}
+.item{display:flex;align-items:center;gap:10px;border:1px solid var(--line);background:#0a111e;border-radius:10px;padding:10px}
+.thumb{width:43px;height:43px;border-radius:9px;background:linear-gradient(135deg,#26344b,#101827);display:grid;place-items:center;font-size:20px}
+.grow{flex:1;min-width:0}
+.switch{width:42px;height:23px;background:#27354b;border-radius:20px;padding:3px;cursor:pointer}
+.switch i{display:block;width:17px;height:17px;border-radius:50%;background:#fff;transition:.2s}
+.switch.on{background:var(--green)}
+.switch.on i{transform:translateX(19px)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#0a111e;border:1px solid var(--line);border-radius:10px;padding:13px}
+.stat strong{font-size:21px;display:block;margin-top:5px}
+.greenText{color:var(--green)}
+.purple{color:#b5a5ff}
+.products{grid-template-columns:repeat(2,1fr)}
+.product{overflow:hidden}
+.product .pic{height:90px;background:linear-gradient(135deg,#26334a,#111a2a);display:grid;place-items:center;font-size:32px;border-radius:9px;margin-bottom:9px}
+.price{color:var(--green);font-weight:800}
+.schedule{display:flex;flex-wrap:wrap;gap:8px}
+.time{padding:8px 11px;background:#17233a;border:1px solid var(--line);border-radius:8px}
+.ai{border-color:#4d3db0;background:linear-gradient(145deg,#15142c,#0d1422)}
+.notice{padding:10px 12px;border-radius:9px;background:#101b2d;color:#aab6ca;font-size:12px;line-height:1.45;margin-top:12px;white-space:pre-wrap}
+.modal{display:none;position:fixed;inset:0;background:#000b;align-items:center;justify-content:center;padding:20px;z-index:5}
+.modal.show{display:flex}
+.modalbox{background:#101827;border:1px solid var(--line);border-radius:14px;padding:22px;max-width:520px;width:100%;max-height:90vh;overflow:auto}
+.modalbox h2{margin-top:0}
+.close{float:right;background:none;border:0;color:#9aa7bc;font-size:22px;cursor:pointer}
+.form{display:grid;gap:10px}
+.form label{font-size:12px;color:var(--muted)}
+.toast{position:fixed;right:20px;bottom:20px;background:#102038;border:1px solid var(--line);padding:12px 15px;border-radius:10px;display:none;z-index:10}
+.toast.show{display:block}
+.small{font-size:12px}
+.empty{padding:20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:10px}
+.posttext{white-space:pre-wrap;color:#d8dfeb;line-height:1.45}
+.badge{font-size:11px;padding:4px 7px;border-radius:99px;background:#18243a;color:#b8c5da}
+.badge.pending{color:#ffd35a;background:#332d12}
+.badge.done{color:var(--green);background:#103b2c}
+@media(max-width:1000px){.side{display:none}.main{padding:18px}.grid{grid-template-columns:1fr}}
+@media(max-width:600px){.connections,.products{grid-template-columns:1fr}.top{flex-direction:column}}
+</style>
+</head>
+
+<body>
+<div class="app">
+
+<aside class="side">
+<div class="brand">🚀 Link<b>Boost</b></div>
+<div class="sub">V1 funcional local<br>Produtos + fila + agenda.</div>
+
+<nav class="nav">
+<button class="active" data-section="dashboard">⌂ &nbsp; Painel</button>
+<button data-section="products">🛍️ &nbsp; Produtos</button>
+<button data-section="groups">👥 &nbsp; Grupos</button>
+<button data-section="schedule">🗓️ &nbsp; Agendamentos</button>
+<button data-section="posts">➤ &nbsp; Postagens</button>
+<button data-section="settings">⚙ &nbsp; Configurações</button>
+</nav>
+
+<div class="tip">
+<b>V1 sem gambiarra</b>
+<p>Os dados são salvos no servidor local. As credenciais de APIs ficam fora do navegador.</p>
+</div>
+</aside>
+
+<main class="main">
+
+<div class="top">
+<div class="title">
+<h1>Olá, Giovanni! 👋</h1>
+<p>Agora os botões realmente salvam dados e alimentam a fila.</p>
+</div>
+<div class="avatar">● V1 local</div>
+</div>
+
+<div class="grid">
+
+<section>
+
+<div class="connections">
+
+<div class="card connect">
+<div class="row">
+<div class="icon shopee">S</div>
+<span id="shopeeStatus" class="status warn"><i class="dot"></i> API não configurada</span>
+</div>
+<h3>Integração Shopee</h3>
+<div class="muted">Cadastre produtos por link agora. API fica pronta para receber as credenciais no servidor.</div>
+<button class="btn secondary" style="margin-top:12px" onclick="openSettings()">Configurar</button>
+</div>
+
+<div class="card connect">
+<div class="row">
+<div class="icon facebook">f</div>
+<span id="facebookStatus" class="status warn"><i class="dot"></i> API não configurada</span>
+</div>
+<h3>Integração Facebook</h3>
+<div class="muted">A V1 organiza grupos e fila. Publicação automática depende das permissões oficiais disponíveis.</div>
+<button class="btn secondary" style="margin-top:12px" onclick="openSettings()">Ver configuração</button>
+</div>
+
+</div>
+
+<div class="card">
+<div class="row">
+<div>
+<h3>👥 Grupos selecionados</h3>
+<div class="muted">Ative ou pause grupos da sua automação.</div>
+</div>
+<button class="btn" onclick="openGroupModal()">＋ Adicionar grupo</button>
+</div>
+<div class="groups" id="groups"></div>
+</div>
+
+<div class="card">
+<div class="row">
+<div>
+<h3>🛒 Seus produtos</h3>
+<div class="muted">Cole um link da Shopee e coloque o produto na sua fila.</div>
+</div>
+<button class="btn" onclick="openProductModal()">＋ Adicionar produto</button>
+</div>
+<div class="products" id="products"></div>
+</div>
+
+<!-- AGENDA AUTOMÁTICA -->
+<div class="card">
+<div class="row">
+<div>
+<h3>🗓️ Agenda de posts</h3>
+<div class="muted">A agenda alimenta a fila automaticamente.</div>
+</div>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<button class="btn secondary" onclick="openScheduleModal()">Configurar</button>
+<button class="btn green" onclick="autoSchedule()">⚡ Preencher fila</button>
+</div>
+</div>
+
+<div style="margin:14px 0 10px">
+<label class="muted">Posts por dia</label>
+<select class="input" id="postsDay" onchange="saveSchedule()">
+<option>3</option>
+<option>5</option>
+<option>7</option>
+<option>10</option>
+</select>
+</div>
+
+<div class="schedule" id="times"></div>
+</div>
+
+<div class="card ai">
+<h3>✨ Gerador de legendas</h3>
+<p class="muted">Escolha um produto para gerar 3 variações e adicionar uma delas à fila.</p>
+
+<div class="row">
+<select class="input" id="aiProduct" style="margin-top:0"></select>
+<button class="btn" onclick="generate()">Gerar</button>
+</div>
+
+<div id="aiText" class="notice">Nenhuma legenda gerada ainda.</div>
+</div>
+
+</section>
+
+<aside>
+
+<div class="card">
+<h3>📊 Visão geral</h3>
+
+<div class="stats">
+
+<div class="stat">
+<span class="muted">Produtos</span>
+<strong id="statProducts">0</strong>
+<span class="greenText">● cadastrados</span>
+</div>
+
+<div class="stat">
+<span class="muted">Grupos ativos</span>
+<strong id="statGroups">0</strong>
+<span class="greenText">● selecionados</span>
+</div>
+
+<div class="stat">
+<span class="muted">Fila</span>
+<strong id="statQueue">0</strong>
+<span class="purple">● pendentes</span>
+</div>
+
+<div class="stat">
+<span class="muted">Publicados</span>
+<strong id="statDone">0</strong>
+<span class="greenText">● registrados</span>
+</div>
+
+</div>
+</div>
+
+<div class="card">
+<div class="row">
+<h3>🗓️ Próximas publicações</h3>
+<button class="btn secondary" onclick="showPosts()">Ver fila</button>
+</div>
+<div class="queue" id="queue"></div>
+</div>
+
+<div class="card">
+<h3>🚀 Próximo passo</h3>
+<p class="muted">Com esta base funcionando, a etapa seguinte é conectar as credenciais reais e implementar os adaptadores oficiais de Shopee/Facebook.</p>
+</div>
+
+</aside>
+
+</div>
+</main>
+</div>
+
+<div class="modal" id="modal">
+<div class="modalbox">
+<button class="close" onclick="closeModal()">×</button>
+<div id="modalContent"></div>
+</div>
+</div>
+
+<div class="toast" id="toast"></div>
+
 <script>
-let state={};let currentVariants=[];
-async function api(path,opts={}){const r=await fetch(path,{headers:{'Content-Type':'application/json',...(opts.headers||{})},...opts});const d=await r.json();if(!r.ok)throw new Error(d.error||'Erro');return d}
-function toast(t){const e=document.querySelector('#toast');e.textContent=t;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2200)}
-function openModalHtml(html){document.querySelector('#modalContent').innerHTML=html;document.querySelector('#modal').classList.add('show')}
-function closeModal(){document.querySelector('#modal').classList.remove('show')}
-function render(){
- document.querySelector('#groups').innerHTML=state.groups.length?state.groups.map(g=>`<div class="item"><div class="thumb">👥</div><div class="grow"><b>${esc(g.name)}</b><div class="muted">${esc(g.members)} membros</div></div><button class="btn danger small" onclick="delGroup('${g.id}')">Excluir</button><div class="switch ${g.active?'on':''}" onclick="toggleGroup('${g.id}',${!g.active})"><i></i></div></div>`).join(''):'<div class="empty">Nenhum grupo cadastrado.</div>';
- document.querySelector('#products').innerHTML=state.products.length?state.products.map(p=>`<div class="item product"><div class="pic">${p.emoji||'🛍️'}</div><div class="grow"><b>${esc(p.name)}</b><div class="price">${esc(p.price)}</div><div class="muted small">${p.productId?'ID '+esc(p.productId):'link cadastrado'}</div></div><button class="btn danger small" onclick="delProduct('${p.id}')">Excluir</button></div>`).join(''):'<div class="empty">Cole um link da Shopee para adicionar seu primeiro produto.</div>';
- document.querySelector('#aiProduct').innerHTML=state.products.map(p=>`<option value="${p.id}">${esc(p.name)}</option>`).join('')||'<option>Cadastre um produto primeiro</option>';
- document.querySelector('#postsDay').value=state.settings.postsPerDay;
- document.querySelector('#times').innerHTML=state.settings.times.map(t=>`<span class="time">${t}</span>`).join('')||'<span class="muted">Sem horários.</span>';
- const pending=state.posts.filter(p=>p.status!=='Publicado');const done=state.posts.filter(p=>p.status==='Publicado');document.querySelector('#statProducts').textContent=state.products.length;document.querySelector('#statGroups').textContent=state.groups.filter(g=>g.active).length;document.querySelector('#statQueue').textContent=pending.length;document.querySelector('#statDone').textContent=done.length;
- document.querySelector('#queue').innerHTML=pending.slice().sort((a,b)=>new Date(a.scheduledAt)-new Date(b.scheduledAt)).slice(0,5).map(p=>{const pr=state.products.find(x=>x.id===p.productId),gr=state.groups.find(x=>x.id===p.groupId);return `<div class="item"><div class="thumb">${pr?.emoji||'🛍️'}</div><div class="grow"><b>${esc(pr?.name||'Produto')}</b><div class="muted small">${esc(gr?.name||'Grupo')} · ${new Date(p.scheduledAt).toLocaleString('pt-BR',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</div></div><span class="badge pending">Pendente</span></div>`}).join('')||'<div class="empty">A fila está vazia.</div>';
+
+let state={};
+let currentVariants=[];
+
+async function api(path,opts={}){
+const r=await fetch(path,{
+headers:{
+'Content-Type':'application/json',
+...(opts.headers||{})
+},
+...opts
+});
+const d=await r.json();
+if(!r.ok)throw new Error(d.error||'Erro');
+return d;
 }
-function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]))}
-async function refresh(){state=await api('/api/state');const ss=document.querySelector('#shopeeStatus'),fs=document.querySelector('#facebookStatus');ss.className='status '+(state.meta.shopeeApiConfigured?'':'warn');ss.innerHTML=`<i class="dot"></i> ${state.meta.shopeeApiConfigured?'API configurada':'API não configurada'}`;fs.className='status '+(state.meta.facebookApiConfigured?'':'warn');fs.innerHTML=`<i class="dot"></i> ${state.meta.facebookApiConfigured?'credenciais configuradas':'API não configurada'}`;render()}
-function openProductModal(){openModalHtml(`<h2>➕ Adicionar produto</h2><p class="muted">Cole o link da Shopee. Nesta V1 o link é salvo no servidor e o ID é identificado quando existir na URL.</p><div class="form"><label>Link da Shopee<input id="purl" class="input" placeholder="https://shopee.com.br/..." /></label><label>Nome do produto<input id="pname" class="input" placeholder="Ex.: Fone Bluetooth TWS" /></label><label>Preço<input id="pprice" class="input" placeholder="Ex.: R$ 49,90" /></label><label>Emoji<input id="pemoji" class="input" value="🛍️" /></label><button class="btn" onclick="addProduct()">Salvar produto</button></div>`)}
-async function addProduct(){try{const x={url:document.querySelector('#purl').value,name:document.querySelector('#pname').value,price:document.querySelector('#pprice').value,emoji:document.querySelector('#pemoji').value};await api('/api/products',{method:'POST',body:JSON.stringify(x)});closeModal();await refresh();toast('Produto salvo na V1.')}catch(e){toast(e.message)}}
-async function delProduct(id){if(!confirm('Excluir este produto?'))return;await api('/api/products/'+id,{method:'DELETE'});await refresh();toast('Produto excluído.')}
-function openGroupModal(){openModalHtml(`<h2>👥 Adicionar grupo</h2><div class="form"><label>Nome<input id="gname" class="input" placeholder="Ex.: Achadinhos Sorocaba" /></label><label>Membros<input id="gmembers" class="input" placeholder="Ex.: 5,2 mil" /></label><button class="btn" onclick="addGroup()">Salvar grupo</button></div>`)}
-async function addGroup(){try{await api('/api/groups',{method:'POST',body:JSON.stringify({name:document.querySelector('#gname').value,members:document.querySelector('#gmembers').value})});closeModal();await refresh();toast('Grupo salvo.')}catch(e){toast(e.message)}}
-async function delGroup(id){if(!confirm('Excluir este grupo?'))return;await api('/api/groups/'+id,{method:'DELETE'});await refresh();toast('Grupo excluído.')}
-async function toggleGroup(id,active){await api('/api/groups/'+id,{method:'PATCH',body:JSON.stringify({active})});await refresh()}
-function openScheduleModal(){openModalHtml(`<h2>🗓️ Configurar agenda</h2><p class="muted">Informe horários separados por vírgula.</p><div class="form"><label>Posts por dia<input id="sday" type="number" min="1" max="20" class="input" value="${state.settings.postsPerDay}" /></label><label>Horários<input id="stimes" class="input" value="${state.settings.times.join(', ')}" /></label><button class="btn" onclick="saveSchedule(true)">Salvar agenda</button></div>`)}
-async function saveSchedule(close=true){let times=close?document.querySelector('#stimes').value.split(',').map(x=>x.trim()).filter(Boolean):state.settings.times;let posts=close?Number(document.querySelector('#sday').value):Number(document.querySelector('#postsDay').value);await api('/api/settings',{method:'POST',body:JSON.stringify({postsPerDay:posts,times})});if(close)closeModal();await refresh();toast('Agenda salva.')}
-async function generate(){const id=document.querySelector('#aiProduct').value;if(!id)return;try{const d=await api('/api/generate',{method:'POST',body:JSON.stringify({productId:id})});currentVariants=d.variants;document.querySelector('#aiText').innerHTML=d.variants.map((v,i)=>`<div style="border-bottom:1px solid var(--line);padding:8px 0"><b>Opção ${i+1}</b><div class="posttext">${esc(v)}</div><button class="btn secondary small" style="margin-top:7px" onclick="queuePost('${id}',${i})">＋ Colocar na fila</button></div>`).join('')}catch(e){toast(e.message)}}
-async function queuePost(productId,index){const groups=state.groups.filter(g=>g.active);if(!groups.length){toast('Ative pelo menos um grupo.');return}const times=state.settings.times.length?state.settings.times:['08:00'];const group=groups[state.posts.length%groups.length];const [h,m]=(times[state.posts.length%times.length]||'12:00').split(':').map(Number);const dt=new Date();dt.setHours(h,m,0,0);if(dt<new Date())dt.setDate(dt.getDate()+1);await api('/api/posts',{method:'POST',body:JSON.stringify({productId,groupId:group.id,text:currentVariants[index],scheduledAt:dt.toISOString()})});await refresh();toast('Post colocado na fila.')} 
-function showPosts(){openModalHtml(`<h2>➤ Fila de publicações</h2><div class="queue">${state.posts.length?state.posts.slice().reverse().map(p=>{const pr=state.products.find(x=>x.id===p.productId),gr=state.groups.find(x=>x.id===p.groupId);return `<div class="item" style="align-items:flex-start"><div class="grow"><b>${esc(pr?.name||'Produto')}</b><div class="muted small">${esc(gr?.name||'Grupo')} · ${new Date(p.scheduledAt).toLocaleString('pt-BR')}</div><p class="posttext">${esc(p.text)}</p></div><button class="btn danger small" onclick="deletePost('${p.id}')">Excluir</button></div>`}).join(''):'<div class="empty">Nenhum post na fila.</div>'}</div>`)}
-async function deletePost(id){await api('/api/posts/'+id,{method:'DELETE'});await refresh();showPosts();toast('Post removido.')} 
-function openSettings(){openModalHtml(`<h2>⚙ Configurações</h2><p class="muted">Configure as integrações no servidor, não no navegador.</p><div class="notice">1. Copie <b>.env.example</b> para <b>.env</b>.<br>2. Preencha as credenciais fornecidas pelas plataformas.<br>3. Reinicie o servidor.<br><br>O painel só informa se as credenciais existem; os segredos nunca são exibidos.</div><button class="btn secondary" onclick="closeModal()">Fechar</button>`)}
-function nav(){document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');const s=b.dataset.section;if(s==='products')openProductModal();else if(s==='groups')openGroupModal();else if(s==='schedule')openScheduleModal();else if(s==='posts')showPosts();else if(s==='settings')openSettings()})}
-nav();refresh();
-</script></body></html>
+
+function toast(t){
+const e=document.querySelector('#toast');
+e.textContent=t;
+e.classList.add('show');
+setTimeout(()=>e.classList.remove('show'),2200);
+}
+
+function openModalHtml(html){
+document.querySelector('#modalContent').innerHTML=html;
+document.querySelector('#modal').classList.add('show');
+}
+
+function closeModal(){
+document.querySelector('#modal').classList.remove('show');
+}
+
+function render(){
+
+document.querySelector('#groups').innerHTML=
+state.groups.length?
+state.groups.map(g=>`
+<div class="item">
+<div class="thumb">👥</div>
+<div class="grow">
+<b>${esc(g.name)}</b>
+<div class="muted">${esc(g.members)} membros</div>
+</div>
+<button class="btn danger small" onclick="delGroup('${g.id}')">Excluir</button>
+<div class="switch ${g.active?'on':''}" onclick="toggleGroup('${g.id}',${!g.active})">
+<i></i>
+</div>
+</div>
+`).join('')
+:'<div class="empty">Nenhum grupo cadastrado.</div>';
+
+document.querySelector('#products').innerHTML=
+state.products.length?
+state.products.map(p=>`
+<div class="item product">
+<div class="pic">${p.emoji||'🛍️'}</div>
+<div class="grow">
+<b>${esc(p.name)}</b>
+<div class="price">${esc(p.price)}</div>
+<div class="muted small">${p.productId?'ID '+esc(p.productId):'link cadastrado'}</div>
+</div>
+<button class="btn danger small" onclick="delProduct('${p.id}')">Excluir</button>
+</div>
+`).join('')
+:'<div class="empty">Cole um link da Shopee para adicionar seu primeiro produto.</div>';
+
+document.querySelector('#aiProduct').innerHTML=
+state.products.map(p=>`
+<option value="${p.id}">${esc(p.name)}</option>
+`).join('')
+||'<option>Cadastre um produto primeiro</option>';
+
+document.querySelector('#postsDay').value=state.settings.postsPerDay;
+
+document.querySelector('#times').innerHTML=
+state.settings.times.map(t=>`
+<span class="time">${t}</span>
+`).join('')
+||'<span class="muted">Sem horários.</span>';
+
+const pending=state.posts.filter(p=>p.status!=='Publicado');
+const done=state.posts.filter(p=>p.status==='Publicado');
+
+document.querySelector('#statProducts').textContent=state.products.length;
+document.querySelector('#statGroups').textContent=state.groups.filter(g=>g.active).length;
+document.querySelector('#statQueue').textContent=pending.length;
+document.querySelector('#statDone').textContent=done.length;
+
+document.querySelector('#queue').innerHTML=
+pending
+.slice()
+.sort((a,b)=>new Date(a.scheduledAt)-new Date(b.scheduledAt))
+.slice(0,5)
+.map(p=>{
+const pr=state.products.find(x=>x.id===p.productId);
+const gr=state.groups.find(x=>x.id===p.groupId);
+
+return `
+<div class="item">
+<div class="thumb">${pr?.emoji||'🛍️'}</div>
+<div class="grow">
+<b>${esc(pr?.name||'Produto')}</b>
+<div class="muted small">
+${esc(gr?.name||'Grupo')} ·
+${new Date(p.scheduledAt).toLocaleString('pt-BR',{
+day:'2-digit',
+month:'2-digit',
+hour:'2-digit',
+minute:'2-digit'
+})}
+</div>
+</div>
+<span class="badge pending">Pendente</span>
+</div>
+`;
+})
+.join('')
+||'<div class="empty">A fila está vazia.</div>';
+
+}
+
+function esc(v){
+return String(v??'').replace(/[&<>"']/g,m=>({
+'&':'&amp;',
+'<':'&lt;',
+'>':'&gt;',
+'"':'&quot;',
+"'":'&#039;'
+}[m]));
+}
+
+async function refresh(){
+
+state=await api('/api/state');
+
+const ss=document.querySelector('#shopeeStatus');
+const fs=document.querySelector('#facebookStatus');
+
+ss.className='status '+(state.meta.shopeeApiConfigured?'':'warn');
+ss.innerHTML=`<i class="dot"></i> ${state.meta.shopeeApiConfigured?'API configurada':'API não configurada'}`;
+
+fs.className='status '+(state.meta.facebookApiConfigured?'':'warn');
+fs.innerHTML=`<i class="dot"></i> ${state.meta.facebookApiConfigured?'credenciais configuradas':'API não configurada'}`;
+
+render();
+}
+
+function openProductModal(){
+
+openModalHtml(`
+<h2>➕ Adicionar produto</h2>
+<p class="muted">
+Cole o link da Shopee. Nesta V1 o link é salvo no servidor e o ID é identificado quando existir na URL.
+</p>
+
+<div class="form">
+
+<label>
+Link da Shopee
+<input id="purl" class="input" placeholder="https://shopee.com.br/..." />
+</label>
+
+<label>
+Nome do produto
+<input id="pname" class="input" placeholder="Ex.: Fone Bluetooth TWS" />
+</label>
+
+<label>
+Preço
+<input id="pprice" class="input" placeholder="Ex.: R$ 49,90" />
+</label>
+
+<label>
+Emoji
+<input id="pemoji" class="input" value="🛍️" />
+</label>
+
+<button class="btn" onclick="addProduct()">Salvar produto</button>
+
+</div>
+`);
+}
+
+async function addProduct(){
+
+try{
+
+const x={
+url:document.querySelector('#purl').value,
+name:document.querySelector('#pname').value,
+price:document.querySelector('#pprice').value,
+emoji:document.querySelector('#pemoji').value
+};
+
+await api('/api/products',{
+method:'POST',
+body:JSON.stringify(x)
+});
+
+closeModal();
+await refresh();
+toast('Produto salvo na V1.');
+
+}catch(e){
+toast(e.message);
+}
+
+}
+
+async function delProduct(id){
+
+if(!confirm('Excluir este produto?'))return;
+
+await api('/api/products/'+id,{
+method:'DELETE'
+});
+
+await refresh();
+toast('Produto excluído.');
+}
+
+function openGroupModal(){
+
+openModalHtml(`
+<h2>👥 Adicionar grupo</h2>
+
+<div class="form">
+
+<label>
+Nome
+<input id="gname" class="input" placeholder="Ex.: Achadinhos Sorocaba" />
+</label>
+
+<label>
+Membros
+<input id="gmembers" class="input" placeholder="Ex.: 5,2 mil" />
+</label>
+
+<button class="btn" onclick="addGroup()">Salvar grupo</button>
+
+</div>
+`);
+}
+
+async function addGroup(){
+
+try{
+
+await api('/api/groups',{
+method:'POST',
+body:JSON.stringify({
+name:document.querySelector('#gname').value,
+members:document.querySelector('#gmembers').value
+})
+});
+
+closeModal();
+await refresh();
+toast('Grupo salvo.');
+
+}catch(e){
+toast(e.message);
+}
+
+}
+
+async function delGroup(id){
+
+if(!confirm('Excluir este grupo?'))return;
+
+await api('/api/groups/'+id,{
+method:'DELETE'
+});
+
+await refresh();
+toast('Grupo excluído.');
+}
+
+async function toggleGroup(id,active){
+
+await api('/api/groups/'+id,{
+method:'PATCH',
+body:JSON.stringify({active})
+});
+
+await refresh();
+}
+
+function openScheduleModal(){
+
+openModalHtml(`
+<h2>🗓️ Configurar agenda</h2>
+<p class="muted">Informe horários separados por vírgula.</p>
+
+<div class="form">
+
+<label>
+Posts por dia
+<input id="sday" type="number" min="1" max="20" class="input" value="${state.settings.postsPerDay}" />
+</label>
+
+<label>
+Horários
+<input id="stimes" class="input" value="${state.settings.times.join(', ')}" />
+</label>
+
+<button class="btn" onclick="saveSchedule(true)">Salvar agenda</button>
+
+</div>
+`);
+}
+
+async function saveSchedule(close=true){
+
+let times=
+close
+?document.querySelector('#stimes').value.split(',').map(x=>x.trim()).filter(Boolean)
+:state.settings.times;
+
+let posts=
+close
+?Number(document.querySelector('#sday').value)
+:Number(document.querySelector('#postsDay').value);
+
+await api('/api/settings',{
+method:'POST',
+body:JSON.stringify({
+postsPerDay:posts,
+times
+})
+});
+
+if(close)closeModal();
+
+await refresh();
+
+toast('Agenda salva.');
+}
+
+/* NOVA FUNÇÃO DE AUTOMAÇÃO */
+
+async function autoSchedule(){
+
+try{
+
+const days=7;
+
+const result=await api('/api/auto-schedule',{
+method:'POST',
+body:JSON.stringify({
+days
+})
+});
+
+await refresh();
+
+if(result.created){
+toast(`⚡ ${result.created} posts adicionados à fila!`);
+}else{
+toast('A fila já está preenchida.');
+}
+
+}catch(e){
+
+toast(e.message);
+
+}
+
+}
+
+async function generate(){
+
+const id=document.querySelector('#aiProduct').value;
+
+if(!id)return;
+
+try{
+
+const d=await api('/api/generate',{
+method:'POST',
+body:JSON.stringify({
+productId:id
+})
+});
+
+currentVariants=d.variants;
+
+document.querySelector('#aiText').innerHTML=
+d.variants.map((v,i)=>`
+<div style="border-bottom:1px solid var(--line);padding:8px 0">
+<b>Opção ${i+1}</b>
+
+<div class="posttext">${esc(v)}</div>
+
+<button class="btn secondary small"
+style="margin-top:7px"
+onclick="queuePost('${id}',${i})">
+＋ Colocar na fila
+</button>
+
+</div>
+`).join('');
+
+}catch(e){
+
+toast(e.message);
+
+}
+
+}
+
+async function queuePost(productId,index){
+
+const groups=state.groups.filter(g=>g.active);
+
+if(!groups.length){
+toast('Ative pelo menos um grupo.');
+return;
+}
+
+const times=state.settings.times.length
+?state.settings.times
+:['08:00'];
+
+const group=groups[state.posts.length%groups.length];
+
+const [h,m]=
+(times[state.posts.length%times.length]||'12:00')
+.split(':')
+.map(Number);
+
+const dt=new Date();
+
+dt.setHours(h,m,0,0);
+
+if(dt<new Date())
+dt.setDate(dt.getDate()+1);
+
+await api('/api/posts',{
+method:'POST',
+body:JSON.stringify({
+productId,
+groupId:group.id,
+text:currentVariants[index],
+scheduledAt:dt.toISOString()
+})
+});
+
+await refresh();
+
+toast('Post colocado na fila.');
+}
+
+function showPosts(){
+
+openModalHtml(`
+<h2>➤ Fila de publicações</h2>
+
+<div class="queue">
+
+${
+state.posts.length
+?
+state.posts.slice().reverse().map(p=>{
+
+const pr=state.products.find(x=>x.id===p.productId);
+const gr=state.groups.find(x=>x.id===p.groupId);
+
+return `
+<div class="item" style="align-items:flex-start">
+
+<div class="grow">
+
+<b>${esc(pr?.name||'Produto')}</b>
+
+<div class="muted small">
+${esc(gr?.name||'Grupo')} ·
+${new Date(p.scheduledAt).toLocaleString('pt-BR')}
+</div>
+
+<p class="posttext">${esc(p.text)}</p>
+
+</div>
+
+<button class="btn danger small"
+onclick="deletePost('${p.id}')">
+Excluir
+</button>
+
+</div>
+`;
+
+}).join('')
+:
+'<div class="empty">Nenhum post na fila.</div>'
+}
+
+</div>
+`);
+}
+
+async function deletePost(id){
+
+await api('/api/posts/'+id,{
+method:'DELETE'
+});
+
+await refresh();
+showPosts();
+toast('Post removido.');
+}
+
+function openSettings(){
+
+openModalHtml(`
+<h2>⚙ Configurações</h2>
+
+<p class="muted">
+Configure as integrações no servidor, não no navegador.
+</p>
+
+<div class="not
