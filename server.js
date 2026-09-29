@@ -76,4 +76,5 @@
       total:db.posts.length
     });
   });
+}
 http.createServer((req,res)=>{route(req,res)}).listen(PORT,()=>console.log(`LinkBoost V1 em http://localhost:${PORT}`));
