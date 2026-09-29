@@ -1,0 +1,60 @@
+{
+  "settings": {
+    "postsPerDay": 5,
+    "times": [
+      "08:00",
+      "12:00",
+      "16:00",
+      "19:00",
+      "21:00"
+    ],
+    "affiliateLink": "",
+    "shopeeConnected": false,
+    "facebookConnected": false
+  },
+  "groups": [
+    {
+      "id": "g1",
+      "name": "Achadinhos da Shopee",
+      "members": "12,4 mil",
+      "active": true
+    },
+    {
+      "id": "g2",
+      "name": "Promoções e Descontos",
+      "members": "8,7 mil",
+      "active": true
+    },
+    {
+      "id": "g3",
+      "name": "Compras Online - Shopee",
+      "members": "25,1 mil",
+      "active": true
+    },
+    {
+      "id": "g4",
+      "name": "Ofertas do Dia",
+      "members": "15,3 mil",
+      "active": true
+    }
+  ],
+  "products": [
+    {
+      "id": "p1",
+      "name": "Fone Bluetooth TWS",
+      "price": "R$ 49,90",
+      "emoji": "🎧",
+      "url": "",
+      "active": true
+    },
+    {
+      "id": "p2",
+      "name": "Smartwatch",
+      "price": "R$ 79,90",
+      "emoji": "⌚",
+      "url": "",
+      "active": true
+    }
+  ],
+  "posts": []
+}
